@@ -1,0 +1,55 @@
+initial state:
+(0, 0) = 0 && (m, n) = 0 => by convention
+(0 0 0 0 .... 0
+ 0 0 0 0 .... 0
+ .
+ .
+ 0 0 0 0 .... 0)
+
+transition:
+
+(1 0 0 0 .... 0
+ 0 0 0 0 .... 0
+ .
+ .
+ 0 0 0 0 .... 0)
+
+transition:
+
+(1 1 0 0 .... 0
+ 0 0 0 0 .... 0
+ .
+ .
+ 0 0 0 0 .... 0)
+
+final state:
+
+(1 1 0 0 .... 0
+ 0 1 0 0 .... 0
+ .
+ .
+ 0 0 1 1 .... 1) - a matrix representing valid a path from (0,0) to (m,n)
+
+(0, 0) = 1 && (m, n) = 1
+
+
+
+MAZE GENERATION:
+mxn matrix with possible values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+1 - North
+2 - South
+4 - East
+8 - West
+
+e.g.: 7 = 1 + 2 + 4 => North, South, East are free to explore
+      9 = 1 + 8 => North, West are free to explore
+=> this means it would be very easy to create a tree which sould explore all the possible routes
+
+BACKTRACKING:
+	- create the tree and explore all the possible routes in order (in depth)
+
+BFS:
+	- create the tree and explore all the possible routes in breadth-wise order
+
+HILLCLIMBING:
+ 
