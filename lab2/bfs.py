@@ -20,7 +20,7 @@ def bfs_solution():
         # destination point
         if x == maze.END[0] and y == maze.END[1]:
             print(f'found solution: {path}')
-            break
+            return
 
         available_directions = get_available_directions(x, y)
         # pick direction in random order
@@ -31,7 +31,9 @@ def bfs_solution():
             if is_direction_safe(direction, path, x, y):
                 p = path.copy()
                 p.append(calculate_direction(direction, x, y))
-                deq.append(p)
+                deq.appendleft(p)
+
+    print('No solution found.')
 
 
 # prevent oscillation
