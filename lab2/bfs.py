@@ -1,5 +1,6 @@
 import random
 from collections import deque
+import time
 
 import maze
 
@@ -14,46 +15,30 @@ deq = deque()
 def bfs_solution():
     while len(deq) > 0:
         path = deq.pop()
-        # print(path)
-        # time.sleep(.5)
-        # print(path)
-        # print(path[-1:][0])
         x, y = path[-1]  # get last tuple
 
         # destination point
-        if x == maze.SIZE[0] - 1 and y == maze.SIZE[1] - 1:
+        if x == maze.END[0] and y == maze.END[1]:
             print(f'found solution: {path}')
             break
 
         available_directions = get_available_directions(x, y)
-
         # pick direction in random order
         while len(available_directions) != 0:
-            new_path = path.copy()
             direction = random.choice(available_directions)
             available_directions.remove(direction)
 
-            if direction == maze.N:
-                if len(new_path) > 1 and new_path[-2] == (x - 1, y):
-                    continue
-                new_path.append((x - 1, y))
-            elif direction == maze.S:
-                if len(new_path) > 1 and new_path[-2] == (x + 1, y):
-                    continue
-                new_path.append((x + 1, y))
-            elif direction == maze.E:
-                if len(new_path) > 1 and new_path[-2] == (x, y + 1):
-                    continue
-                new_path.append((x, y + 1))
-            elif direction == maze.W:
-                if len(new_path) > 1 and new_path[-2] == (x, y - 1):
-                    continue
-                new_path.append((x, y - 1))
-
-            deq.append(new_path)
+            if is_direction_safe(direction, path, x, y):
+                p = path.copy()
+                p.append(calculate_direction(direction, x, y))
+                deq.append(p)
 
 
-# def is_direction_safe(direction, path, x, y):
+# prevent oscillation
+def is_direction_safe(direction, path, x, y):
+    if len(path) > 1 and path[-2] == calculate_direction(direction, x, y):
+        return False
+    return True
 
 
 def get_available_directions(x, y):
@@ -64,8 +49,21 @@ def get_available_directions(x, y):
     return available_directions
 
 
+def calculate_direction(direction, x, y):
+    if direction == maze.N:
+        x -= 1
+    elif direction == maze.S:
+        x += 1
+    elif direction == maze.E:
+        y += 1
+    elif direction == maze.W:
+        y -= 1
+
+    return x, y
+
+
 maze.dig(maze.SIZE[0] // 2, maze.SIZE[1] // 2)
 maze.draw()
 maze.check()
-deq.append([(0, 0)])
+deq.append([maze.START])
 bfs_solution()
