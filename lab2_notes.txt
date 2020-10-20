@@ -52,4 +52,11 @@ BFS:
 	- create the tree and explore all the possible routes in breadth-wise order
 
 HILLCLIMBING:
+	- h(n) = abs(Xfininsh - Xcurrent) + abs(Yfinish - Ycurrent)
+	- h(n') = abs(Xfininsh - Xtarget) + abs(Yfinish - Ytarget)
  
+SIMULATED ANNEALING:
+	- start with a score of mxn (i.e. for n=5 and m=6, initial score=30)
+	- loss applies if i am forced to make a "bad" move (all possible following states are "worse")
+	- loss value for h(n') < h(n) is h(n)-h(n')
+	- probability = e^(-loss/score)
