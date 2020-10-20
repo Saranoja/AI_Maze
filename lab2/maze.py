@@ -1,9 +1,9 @@
 import random
 import sys
 
-SIZE = (10, 10)
-START = (2, 0)
-END = (2, 9)
+SIZE = (4, 4)
+START = (0, 0)
+END = (3, 3)
 
 if sys.getrecursionlimit() < SIZE[0] * SIZE[1]:
     sys.setrecursionlimit(SIZE[0] * SIZE[1])

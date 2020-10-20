@@ -64,6 +64,6 @@ def calculate_direction(direction, x, y):
 
 maze.dig(maze.SIZE[0] // 2, maze.SIZE[1] // 2)
 maze.draw()
-maze.check()
+#maze.check()
 deq.append([maze.START])
 bfs_solution()

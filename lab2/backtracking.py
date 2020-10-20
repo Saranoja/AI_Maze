@@ -70,5 +70,5 @@ def is_direction_safe(direction, x, y):
 
 maze.dig(0, 0)
 maze.draw()
-maze.check()
+#maze.check()
 backtracking_solution()
