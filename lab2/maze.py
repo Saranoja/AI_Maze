@@ -2,6 +2,8 @@ import random
 import sys
 
 SIZE = (10, 10)
+START = (2, 0)
+END = (2, 9)
 
 if sys.getrecursionlimit() < SIZE[0] * SIZE[1]:
     sys.setrecursionlimit(SIZE[0] * SIZE[1])
@@ -65,7 +67,7 @@ def draw():
     # prints the seed (for reference) and the lab size
     print("_" * (SIZE[0] * 2))
     for j in range(SIZE[1]):
-        if j != 0:
+        if j != START[0]:
             print("|", end='')
         else:
             print("_", end='')
@@ -79,7 +81,7 @@ def draw():
                     print(" ", end='')
                 else:
                     print("_", end='')
-            elif (j == SIZE[1] - 1) & (i == SIZE[0] - 1):
+            elif (j == END[0]) & (i == END[1]):
                 print("_", end='')
             else:
                 print("|", end='')

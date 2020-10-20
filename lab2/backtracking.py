@@ -9,7 +9,7 @@ def backtracking_solution():
     global solution_matrix
     solution_matrix = [[0 for j in range(maze.SIZE[0])] for i in range(maze.SIZE[1])]
 
-    if not find_path(0, 0):
+    if not find_path(maze.START[0], maze.START[1]):
         print("No solution found for solving the maze.")
         return False
 
@@ -19,7 +19,7 @@ def backtracking_solution():
 
 
 def find_path(x, y):
-    if x == maze.SIZE[0] - 1 and y == maze.SIZE[1] - 1:  # destination point
+    if x == maze.END[0] and y == maze.END[1]:  # destination point
         solution_matrix[x][y] = 'X'
         return True
 
@@ -68,7 +68,7 @@ def is_direction_safe(direction, x, y):
     return False
 
 
-maze.dig(maze.SIZE[0] // 2, maze.SIZE[1] // 2)
+maze.dig(0, 0)
 maze.draw()
-# maze.check()
+maze.check()
 backtracking_solution()
