@@ -18,7 +18,7 @@ def bfs_solution():
         x, y = path[-1]  # get last tuple
 
         # destination point
-        if x == maze.END[0] and y == maze.END[1]:
+        if (x, y) == maze.END:
             print(f'found solution: {path}')
             return
 
@@ -66,6 +66,6 @@ def calculate_direction(direction, x, y):
 
 maze.dig(maze.SIZE[0] // 2, maze.SIZE[1] // 2)
 maze.draw()
-#maze.check()
+# maze.check()
 deq.append([maze.START])
 bfs_solution()

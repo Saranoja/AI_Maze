@@ -3,8 +3,10 @@ import maze
 
 maze_matrix = maze.maze
 solution_matrix = [[]]
-heuristic_matrix = maze_matrix.copy()
 path = [maze.START]
+heuristic_matrix = maze_matrix.copy()
+for index, line in enumerate(heuristic_matrix):
+    heuristic_matrix[index] = line.copy()
 
 x, y = maze.START
 
@@ -64,6 +66,6 @@ def print_heuristic_matrix():
 
 maze.dig(maze.SIZE[0] // 2, maze.SIZE[1] // 2)
 maze.draw()
-# maze.check()
+print_heuristic_matrix()
+maze.check()
 hillclimbing_solution()
-# print_heuristic_matrix()

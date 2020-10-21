@@ -3,7 +3,7 @@ import sys
 
 SIZE = (4, 4)
 START = (0, 0)
-END = (3, 3)
+END = (SIZE[0] - 1, SIZE[1] - 1)
 
 if sys.getrecursionlimit() < SIZE[0] * SIZE[1]:
     sys.setrecursionlimit(SIZE[0] * SIZE[1])
